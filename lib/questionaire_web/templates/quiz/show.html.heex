@@ -1,0 +1,38 @@
+<h1>Show Quiz</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @quiz.name %>
+  </li>
+
+  <li>
+    <strong>User:</strong>
+    <%= @quiz.user_id %>
+  </li>
+
+  <li>
+    <strong>Subject:</strong>
+    <%= @quiz.subject_id %>
+  </li>
+
+  <li>
+    <strong>Stake:</strong>
+    <%= @quiz.stake %>
+  </li>
+
+  <li>
+    <strong>Winnings:</strong>
+    <%= @quiz.winnings %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @quiz.status %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.quiz_path(@conn, :edit, @quiz) %></span> |
+<span><%= link "Back", to: Routes.quiz_path(@conn, :index) %></span>
