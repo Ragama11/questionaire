@@ -1,21 +1,21 @@
 defmodule QuestionaireWeb.QuestionController do
   use QuestionaireWeb, :controller
 
-  alias Questionaire.Accounts
-  alias Questionaire.Accounts.Question
+  alias Questionaire.Questions
+  alias Questionaire.Questions.Question
 
   def index(conn, _params) do
-    questions = Accounts.list_questions()
+    questions = Questions.list_questions()
     render(conn, "index.html", questions: questions)
   end
 
   def new(conn, _params) do
-    changeset = Accounts.change_question(%Question{})
+    changeset = Questions.change_question(%Question{})
     render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"question" => question_params}) do
-    case Accounts.create_question(question_params) do
+    case Questions.create_question(question_params) do
       {:ok, question} ->
         conn
         |> put_flash(:info, "Question created successfully.")
@@ -27,20 +27,20 @@ defmodule QuestionaireWeb.QuestionController do
   end
 
   def show(conn, %{"id" => id}) do
-    question = Accounts.get_question!(id)
+    question = Questions.get_question!(id)
     render(conn, "show.html", question: question)
   end
 
   def edit(conn, %{"id" => id}) do
-    question = Accounts.get_question!(id)
-    changeset = Accounts.change_question(question)
+    question = Questions.get_question!(id)
+    changeset = Questions.change_question(question)
     render(conn, "edit.html", question: question, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "question" => question_params}) do
-    question = Accounts.get_question!(id)
+    question = Questions.get_question!(id)
 
-    case Accounts.update_question(question, question_params) do
+    case Questions.update_question(question, question_params) do
       {:ok, question} ->
         conn
         |> put_flash(:info, "Question updated successfully.")
@@ -52,8 +52,8 @@ defmodule QuestionaireWeb.QuestionController do
   end
 
   def delete(conn, %{"id" => id}) do
-    question = Accounts.get_question!(id)
-    {:ok, _question} = Accounts.delete_question(question)
+    question = Questions.get_question!(id)
+    {:ok, _question} = Questions.delete_question(question)
 
     conn
     |> put_flash(:info, "Question deleted successfully.")

@@ -3,7 +3,7 @@ defmodule Questionaire.Repo.Migrations.CreateQuestions do
 
   def change do
     create table(:questions) do
-      add :quiz_id, :integer
+      add :quiz_id, references(:quizes)
       add :question, :string
       add :answer, :string
       add :status, :string

@@ -10,10 +10,10 @@ defmodule QuestionaireWeb.UserController do
     render(conn, "index.html", users: users)
   end
 
-  # def new(conn, _params) do
-  #   changeset = Users.change_user(%User{})
-  #   render(conn, "new.html", changeset: changeset)
-  # end
+  def new(conn, _params) do
+    changeset = Users.change_user(%User{})
+    render(conn, "new.html", changeset: changeset)
+  end
 
   def create(conn, %{"user" => user_params}) do
     case Users.create_user(user_params) do

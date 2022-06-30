@@ -4,7 +4,6 @@ defmodule QuestionaireWeb.QuizController do
 
   alias Questionaire.Quizes.Quiz
   alias Questionaire.Quizes
-  alias QuestionaireWeb.Router.Helpers
 
 
 

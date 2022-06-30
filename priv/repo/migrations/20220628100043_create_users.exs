@@ -6,7 +6,7 @@ defmodule Questionaire.Repo.Migrations.CreateUsers do
       add :full_name, :string
       add :email, :string
       add :msisdn, :string
-      add :password, :string
+      add :password, :string, virtual: true
 
       timestamps()
     end
