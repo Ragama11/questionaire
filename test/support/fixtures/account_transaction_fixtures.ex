@@ -1,28 +1,8 @@
-defmodule Questionaire.AccountsFixtures do
+defmodule Questionaire.AccountTranctionsFixtures do
   @moduledoc """
   This module defines test helpers for creating
   entities via the `Questionaire.Accounts` context.
   """
-
-  @doc """
-  Generate a account.
-  """
-  def account_fixture(attrs \\ %{}) do
-    {:ok, account} =
-      attrs
-      |> Enum.into(%{
-        account_number: "some account_number",
-        balance: "some balance",
-        currency: "some currency",
-        user_id: 42
-      })
-      |> Questionaire.Accounts.create_account()
-
-    account
-  end
-
-
-
   @doc """
   Generate a account_transaction.
   """

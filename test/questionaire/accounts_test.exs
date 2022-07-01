@@ -174,4 +174,66 @@ defmodule Questionaire.AccountsTest do
       assert %Ecto.Changeset{} = Accounts.change_result(result)
     end
   end
+
+  describe "account_transactions" do
+    alias Questionaire.Accounts.Account_transaction
+
+    import Questionaire.AccountsFixtures
+
+    @invalid_attrs %{amount: nil, currency: nil, reference_number: nil, time: nil, transaction_type: nil}
+
+    test "list_account_transactions/0 returns all account_transactions" do
+      account_transaction = account_transaction_fixture()
+      assert Accounts.list_account_transactions() == [account_transaction]
+    end
+
+    test "get_account_transaction!/1 returns the account_transaction with given id" do
+      account_transaction = account_transaction_fixture()
+      assert Accounts.get_account_transaction!(account_transaction.id) == account_transaction
+    end
+
+    test "create_account_transaction/1 with valid data creates a account_transaction" do
+      valid_attrs = %{amount: "some amount", currency: "some currency", reference_number: 42, time: ~U[2022-06-30 09:41:00Z], transaction_type: "some transaction_type"}
+
+      assert {:ok, %Account_transaction{} = account_transaction} = Accounts.create_account_transaction(valid_attrs)
+      assert account_transaction.amount == "some amount"
+      assert account_transaction.currency == "some currency"
+      assert account_transaction.reference_number == 42
+      assert account_transaction.time == ~U[2022-06-30 09:41:00Z]
+      assert account_transaction.transaction_type == "some transaction_type"
+    end
+
+    test "create_account_transaction/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Accounts.create_account_transaction(@invalid_attrs)
+    end
+
+    test "update_account_transaction/2 with valid data updates the account_transaction" do
+      account_transaction = account_transaction_fixture()
+      update_attrs = %{amount: "some updated amount", currency: "some updated currency", reference_number: 43, time: ~U[2022-07-01 09:41:00Z], transaction_type: "some updated transaction_type"}
+
+      assert {:ok, %Account_transaction{} = account_transaction} = Accounts.update_account_transaction(account_transaction, update_attrs)
+      assert account_transaction.amount == "some updated amount"
+      assert account_transaction.currency == "some updated currency"
+      assert account_transaction.reference_number == 43
+      assert account_transaction.time == ~U[2022-07-01 09:41:00Z]
+      assert account_transaction.transaction_type == "some updated transaction_type"
+    end
+
+    test "update_account_transaction/2 with invalid data returns error changeset" do
+      account_transaction = account_transaction_fixture()
+      assert {:error, %Ecto.Changeset{}} = Accounts.update_account_transaction(account_transaction, @invalid_attrs)
+      assert account_transaction == Accounts.get_account_transaction!(account_transaction.id)
+    end
+
+    test "delete_account_transaction/1 deletes the account_transaction" do
+      account_transaction = account_transaction_fixture()
+      assert {:ok, %Account_transaction{}} = Accounts.delete_account_transaction(account_transaction)
+      assert_raise Ecto.NoResultsError, fn -> Accounts.get_account_transaction!(account_transaction.id) end
+    end
+
+    test "change_account_transaction/1 returns a account_transaction changeset" do
+      account_transaction = account_transaction_fixture()
+      assert %Ecto.Changeset{} = Accounts.change_account_transaction(account_transaction)
+    end
+  end
 end

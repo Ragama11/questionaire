@@ -3,7 +3,7 @@ defmodule QuestionaireWeb.SubjectController do
 
   alias Questionaire.Subjects
   alias Questionaire.Subjects.Subject
-  alias QuestionaireWeb.Router.Helpers
+  QuestionaireWeb.Router.Helpers
 
   def index(conn, _params) do
     subjects = Subjects.list_subjects()

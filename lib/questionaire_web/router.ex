@@ -24,14 +24,7 @@ defmodule QuestionaireWeb.Router do
     resources "/quizes", QuizController
     resources "/questions", QuestionController
     resources "/accounts", AccountController
-
-
-
-
-
-
-
-
+    resources "/account_transactions", Account_transactionController
   end
 
   # Other scopes may use custom stacks.
