@@ -20,6 +20,16 @@ defmodule QuestionaireWeb.Router do
     get "/", PageController, :index
     resources "/users", UserController
     resources "/subjects", SubjectController
+    resources "/results", ResultController
+    resources "/quizes", QuizController
+    resources "/questions", QuestionController
+    resources "/accounts", AccountController
+
+
+
+
+
+
 
 
   end

@@ -1,0 +1,18 @@
+<h1>Show Result</h1>
+
+<ul>
+
+  <li>
+    <strong>User quiz mapping:</strong>
+    <%= @result.user_quiz_mapping_id %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @result.status %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.result_path(@conn, :edit, @result) %></span> |
+<span><%= link "Back", to: Routes.result_path(@conn, :index) %></span>

@@ -21,18 +21,20 @@ defmodule Questionaire.AccountsFixtures do
     account
   end
 
+
+
   @doc """
-  Generate a user_quiz_mapping.
+  Generate a result.
   """
-  def user_quiz_mapping_fixture(attrs \\ %{}) do
-    {:ok, user_quiz_mapping} =
+  def result_fixture(attrs \\ %{}) do
+    {:ok, result} =
       attrs
       |> Enum.into(%{
-        quiz_id: 42,
-        user_id: 42
+        status: "some status",
+        user_quiz_mapping_id: 42
       })
-      |> Questionaire.Accounts.create_user_quiz_mapping()
+      |> Questionaire.Accounts.create_result()
 
-    user_quiz_mapping
+    result
   end
 end

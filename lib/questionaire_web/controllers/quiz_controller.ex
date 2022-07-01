@@ -4,7 +4,7 @@ defmodule QuestionaireWeb.QuizController do
 
   alias Questionaire.Quizes.Quiz
   alias Questionaire.Quizes
-
+  QuestionaireWeb.Router.Helpers
 
 
   def index(conn, _params) do

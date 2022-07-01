@@ -1,4 +1,4 @@
-defmodule Questionaire.Accounts.User_quiz_mapping do
+defmodule Questionaire.UserQuizMappings.User_quiz_mapping do
   use Ecto.Schema
   import Ecto.Changeset
 
